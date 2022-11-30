@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:expenses/models/transaction.dart';
 import 'package:flutter/material.dart';
 
@@ -48,8 +46,12 @@ class MyHomePage extends StatelessWidget {
               elevation: 5,
             ),
           ),
-          Card(
-            child: Text('Lista de Transações'),
+          Column(
+            children: _transactions.map((tr) {
+              return Card(
+                child: Text(tr.title),
+              );
+            }).toList(),
           )
         ],
       ),
