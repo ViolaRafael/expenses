@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
 class TransactionForm extends StatefulWidget {
-
-  final void Function(String,double) onSubmit;
+  final void Function(String, double) onSubmit;
 
   TransactionForm(this.onSubmit);
 
@@ -19,11 +18,11 @@ class _TransactionFormState extends State<TransactionForm> {
     final title = titleController.text;
     final value = double.tryParse(valueController.text) ?? 0.0;
 
-    if(title.isEmpty || value <= 0) {
+    if (title.isEmpty || value <= 0) {
       return;
     }
 
-    widget.onSubmit(title,value);
+    widget.onSubmit(title, value);
   }
 
   @override
@@ -46,16 +45,34 @@ class _TransactionFormState extends State<TransactionForm> {
               keyboardType: TextInputType.numberWithOptions(decimal: true),
               onSubmitted: (_) => _submitform(),
               decoration: InputDecoration(
-                labelText: 'Valor (E\€)',
+                labelText: 'Valor (E€)',
+              ),
+            ),
+            Container(
+              height: 70,
+              child: Row(
+                children: [
+                  Text('Nenhuma data selecionada!'),
+                  TextButton(
+                    child: Text(
+                      'Selecionar Data',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    onPressed: () {},
+                  )
+                ],
               ),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                TextButton(
+                ElevatedButton(
                   child: Text('Nova Transação'),
-                  style: TextButton.styleFrom(
-                    foregroundColor: Colors.purple,
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Theme.of(context).colorScheme.primary,
+                    foregroundColor: Colors.white,
                   ),
                   onPressed: _submitform,
                 ),

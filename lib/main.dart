@@ -18,10 +18,12 @@ class ExpensesApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.purple)
               .copyWith(secondary: Colors.amber),
           textTheme: tema.textTheme.copyWith(
-              headline6: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black)),
+            headline6: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+              color: Colors.black,
+            ),
+          ),
           appBarTheme: AppBarTheme(
             titleTextStyle: TextStyle(
                 fontFamily: 'OpenSans',
