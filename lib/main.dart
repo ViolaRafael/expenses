@@ -1,9 +1,9 @@
-import 'package:flutter/material.dart';
 import 'components/transaction_form.dart';
 import 'components/transaction_list.dart';
 import '/models/transaction.dart';
-import 'dart:math';
 import 'components/chart.dart';
+import 'package:flutter/material.dart';
+import 'dart:math';
 
 main() => runApp(ExpensesApp());
 
@@ -39,14 +39,6 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final List<Transaction> _transactions = [
-    Transaction(
-      id: 't0',
-      title: 'Conta Antiga',
-      value: 400.00,
-      date: DateTime.now().subtract(
-        Duration(days: 33),
-      ),
-    ),
     Transaction(
       id: 't1',
       title: 'Novo Tênis de Corrida',
