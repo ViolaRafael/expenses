@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+
 class TransactionForm extends StatefulWidget {
   final void Function(String, double, DateTime) onSubmit;
 
@@ -43,63 +44,71 @@ class _TransactionFormState extends State<TransactionForm> {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 5,
-      child: Padding(
-        padding: const EdgeInsets.all(10),
-        child: Column(
-          children: [
-            TextField(
-              controller: titleController,
-              onSubmitted: (_) => _submitform(),
-              decoration: InputDecoration(
-                labelText: 'Título',
+    return SingleChildScrollView(
+      child: Card(
+        elevation: 5,
+        child: Padding(
+          padding: EdgeInsets.only(
+            top: 10,
+            right: 10,
+            left: 10,
+            bottom: 10 + MediaQuery.of(context).viewInsets.bottom,
+          ),
+          child: Column(
+            children: [
+              TextField(
+                controller: titleController,
+                onSubmitted: (_) => _submitform(),
+                decoration: InputDecoration(
+                  labelText: 'Título',
+                ),
               ),
-            ),
-            TextField(
-              controller: valueController,
-              keyboardType: TextInputType.numberWithOptions(decimal: true),
-              onSubmitted: (_) => _submitform(),
-              decoration: InputDecoration(
-                labelText: 'Valor (E€)',
+              TextField(
+                controller: valueController,
+                keyboardType: TextInputType.numberWithOptions(decimal: true),
+                onSubmitted: (_) => _submitform(),
+                decoration: InputDecoration(
+                  labelText: 'Valor (E€)',
+                ),
               ),
-            ),
-            Container(
-              height: 70,
-              child: Row(
-                children: [
-                  Expanded(
-                    child: Text(
-                      _selectedDate == null ?'Nenhuma data selecionada!'
-                      : 'Data Selecionada: ${DateFormat('d/M/y').format(_selectedDate)}',
-                    ),
-                  ),
-                  TextButton(
-                    child: Text(
-                      'Selecionar Data',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
+              Container(
+                height: 70,
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Text(
+                        _selectedDate == null
+                            ? 'Nenhuma data selecionada!'
+                            : 'Data Selecionada: ${DateFormat('d/M/y').format(_selectedDate)}',
                       ),
                     ),
-                    onPressed: _showDatePicker,
-                  )
-                ],
-              ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                ElevatedButton(
-                  child: Text('Nova Transação'),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Theme.of(context).colorScheme.primary,
-                    foregroundColor: Colors.white,
-                  ),
-                  onPressed: _submitform,
+                    TextButton(
+                      child: Text(
+                        'Selecionar Data',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      onPressed: _showDatePicker,
+                    )
+                  ],
                 ),
-              ],
-            )
-          ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  ElevatedButton(
+                    child: Text('Nova Transação'),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Theme.of(context).colorScheme.primary,
+                      foregroundColor: Colors.white,
+                    ),
+                    onPressed: _submitform,
+                  ),
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );
