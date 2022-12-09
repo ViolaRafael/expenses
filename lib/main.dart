@@ -1,10 +1,9 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-
 import 'components/transaction_form.dart';
 import 'components/transaction_list.dart';
 import '/models/transaction.dart';
 import 'components/chart.dart';
-import 'package:flutter/material.dart';
 import 'dart:math';
 import 'dart:io';
 
@@ -122,11 +121,13 @@ class _MyHomePageState extends State<MyHomePage> {
         appBar.preferredSize.height -
         MediaQuery.of(context).padding.top;
 
-    final bodypage = SafeArea(
+    final bodyPage = SafeArea(
       child: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
+            /// the code bellow was used as a base for chart_bar
+            /// and to test dynamic heigh
             // if(isLandscape)
             // Row(
             //   mainAxisAlignment: MainAxisAlignment.center,
@@ -166,11 +167,11 @@ class _MyHomePageState extends State<MyHomePage> {
                 children: actions,
               ),
             ),
-            child: bodypage,
+            child: bodyPage,
           )
         : Scaffold(
             appBar: appBar,
-            body: bodypage,
+            body: bodyPage,
             floatingActionButton: Platform.isAndroid
                 ? Container()
                 : FloatingActionButton(
